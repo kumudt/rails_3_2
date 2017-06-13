@@ -1,3 +1,6 @@
+require_relative '../middleware/middleware'
+require 'google/cloud/logging'
+
 Rails3App::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -35,4 +38,12 @@ Rails3App::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
+  # Stackdriver
+  google_stackdriver_config = YAML.load_file("#{Rails.root.to_s}/config/gcloud_stackdriver_config.yml")[Rails.env]
+  project_id = google_stackdriver_config["GOOGLE_CLOUD_PROJECT"]
+  keyfile = "#{config.root}/#{google_stackdriver_config["GOOGLE_CLOUD_KEYFILE"]}"
+
+  # config.middleware.use Middleware::Middleware
+  config.logger = Rails3App::Logging::RequestLogger.new "webapp", project_id, keyfile
+  config.middleware.insert_before Rails::Rack::Logger, Rails3App::Logging::Middleware, service_name: "webapp", logger: config.logger
 end

@@ -1,0 +1,12 @@
+default: &DEFAULT
+  GOOGLE_CLOUD_PROJECT : "Google Project Id"
+  GOOGLE_CLOUD_KEYFILE : "/path/to/keyfile.json"
+
+development:
+  <<: *DEFAULT
+
+staging:
+  <<: *DEFAULT
+
+production:
+  <<: *DEFAULT

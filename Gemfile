@@ -20,6 +20,7 @@ end
 gem 'jquery-rails'
 
 gem "google-cloud-logging", "1.1.0"
+gem "google-protobuf", "3.2.0.2"
 
 # Use unicorn as the web server
 # gem 'unicorn'

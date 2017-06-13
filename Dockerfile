@@ -16,8 +16,8 @@ RUN mkdir /testsite
 WORKDIR /testsite
 ADD Gemfile /testsite/Gemfile
 ADD Gemfile.lock /testsite/Gemfile.lock
-ENV RUBY_VERSION=ruby-2.1.5 RAILS_ENV=development
-RUN bundle install --jobs 10 --without test
+ENV RUBY_VERSION=ruby-2.1.5 RAILS_ENV=staging
+RUN bundle install --jobs 10 --without development test
 
 # Copying source-code
 ADD . /testsite

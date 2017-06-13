@@ -9,8 +9,6 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-require "google/cloud/logging/rails"
-
 module Rails3App
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

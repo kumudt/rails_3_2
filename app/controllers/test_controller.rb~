@@ -1,0 +1,36 @@
+class TestController < ApplicationController
+  def test_error
+    logger.warn "Warning from TestController"
+
+		raise "TEST ERROR from Rails 5"
+
+		@outputs = []
+		# @outputs << result.inspect
+
+    render "test/test"
+  end
+
+  def test_logging
+    logger.info "*************Test info from my_rails_app"
+    Rails.logger.warn "*******Warning from my_rails app"
+    logger.fatal "*******Something really bad happened from my_rails app"
+
+    @outputs = [logger.class]
+    render "test/test"
+  end
+
+  def test_spam_logging
+    t1 = Time.now
+
+    1000.times do |i|
+      logger.info "*******massive spam logging entry ##{i + 1}"
+    end
+
+    td = Time.now - t1
+
+    puts "**************************** delta time:", td
+
+    @outputs = [td.to_s]
+    render "test/test"
+  end
+end

@@ -1,6 +1,6 @@
 default: &DEFAULT
-  GOOGLE_CLOUD_PROJECT : "Google Project Id"
-  GOOGLE_CLOUD_KEYFILE : "/path/to/keyfile.json"
+  GOOGLE_CLOUD_PROJECT : "sandbox-159310"
+  GOOGLE_CLOUD_KEYFILE : "config/stackdriver_keyfiles/staging.json"
 
 development:
   <<: *DEFAULT

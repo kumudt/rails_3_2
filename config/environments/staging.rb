@@ -44,6 +44,6 @@ Rails3App::Application.configure do
   keyfile = "#{config.root}/#{google_stackdriver_config["GOOGLE_CLOUD_KEYFILE"]}"
 
   # config.middleware.use Middleware::Middleware
-  config.logger = Rails3App::Logging::RequestLogger.new "webapp", project_id, keyfile
-  config.middleware.insert_before Rails::Rack::Logger, Rails3App::Logging::Middleware, service_name: "webapp", logger: config.logger
+  config.logger = Rails3App::Logging::RequestLogger.new "webapp317", project_id, keyfile
+  config.middleware.insert_before Rails::Rack::Logger, Rails3App::Logging::Middleware, service_name: "webapp317", logger: config.logger
 end
